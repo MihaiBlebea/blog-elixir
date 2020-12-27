@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%= Blog.Web.Component.component_head() %>
+
+        <!-- Share on Linkedin -->
+        <meta property='og:title' content='{{ $article.Title }}'/>
+        <meta property='og:image' content='{{ $article.Image }}'/>
+        <meta property='og:description' content='{{ $article.Summary }}'/>
+        <meta property='og:url' content='https://mihaiblebea.com/article/{{ $article.Slug }}'/>
+        <meta property='author' content='Mihai Blebea'/>
+        <meta name="publish_date" property="og:publish_date" content="{{ $article.Published }}">
+
+        <!-- Share on Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:site" content="@MBlebea" />
+        <meta property="twitter:creator" content="@MBlebea" />
+        <meta property="twitter:title" content="{{ $article.Title }}">
+        <meta property="twitter:description" content="{{ $article.Summary }}">
+        <meta property="twitter:image" content="{{ $article.Image }}">
+        <meta property='twitter:url' content='https://mihaiblebea.com/article/{{ $article.Slug }}'/>
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/monokai-sublime.min.css">
+    </head>
+    <body>
+        <!-- Navigation-->
+        <%= Blog.Web.Component.component_navigation() %>
+
+        <!-- Masthead-->
+        <%= Blog.Web.Component.component_main() %>
+
+        <div class="page-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-8 col-md-8 mx-auto article-content">
+                        <%= Blog.Web.Util.to_html article.content %>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-lg-8 col-md-8 mx-auto">
+                        <%= Blog.Web.Component.component_lead_box %>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 mx-auto">
+                        <div id="disqus_thread"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%= if length(articles) > 0 do %>
+        <div class="page-section bg-primary">
+            <div class="container">
+
+                <%= Blog.Web.Component.component_divider("Read more") %>
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 mx-auto">
+                        <%= for article <- articles do %>
+                            <div class="card mb-5">
+                                <div class="card-body">
+                                    <%= Blog.Web.Component.component_article_small(article) %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+
+        <!-- Footer-->
+        <%= Blog.Web.Component.component_footer() %>
+
+        <!-- Disqus script-->
+        <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        var disqus_config = function () {
+            this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = window.location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://mihaiblebea.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        <!-- highlightjs script-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.6.0/dist/highlightjs-line-numbers.min.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad()
+            hljs.initLineNumbersOnLoad()
+        </script>
+    </body>
+</html>

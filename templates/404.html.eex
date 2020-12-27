@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%= Blog.Web.Component.component_head() %>
+
+    </head>
+    <body>
+        <!-- Navigation-->
+        <%= Blog.Web.Component.component_navigation() %>
+
+        <!-- Masthead-->
+        <%= Blog.Web.Component.component_main() %>
+
+        <h1>This is a 404 page</p>
+
+        <!-- Footer-->
+        <%= Blog.Web.Component.component_footer() %>
+    </body>
+</html>

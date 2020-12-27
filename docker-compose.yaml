@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+    database:
+        image: mariadb:latest
+        container_name: shortener_mysql_db
+        volumes:
+            - ./volume/mysql:/var/lib/mysql
+        restart: always
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_PASSWORD=pass
+            - MYSQL_USER=admin
+            - MYSQL_DATABASE=blog

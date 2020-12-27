@@ -1,0 +1,26 @@
+<section class="page-section blog" id="blog">
+    <div class="container">
+
+        <%= Blog.Web.Component.component_divider("Blog") %>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 mx-auto">
+                <%= for article <- articles do %>
+                    <div class="card mb-5 d-block">
+                        <a href="/article/<%= article.slug %>" class="blog-item">
+                            <div class="blog-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div>
+                                    <div class="blog-item-caption-content text-center text-white"><i class="fas fa-plus fa-2x"></i></div>
+                                    <h3 class="d-block text-white"><%= article.title %></h3>
+                                </div>
+                            </div>
+                            <img src="<%= article.image_url %>" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <%= Blog.Web.Component.component_article_small(article) %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+</section>
