@@ -27,7 +27,8 @@
         <%= Blog.Web.Component.component_navigation() %>
 
         <!-- Masthead-->
-        <%= Blog.Web.Component.component_main() %>
+        <%= subtitle = Enum.join([Blog.Web.Util.to_format_date(article.created), "Mihai Blebea"], " - ") %>
+        <%= Blog.Web.Component.component_main_article(article.title, subtitle, article.image_url) %>
 
         <div class="page-section">
             <div class="container">

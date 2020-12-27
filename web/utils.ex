@@ -41,6 +41,7 @@ defmodule Blog.Web.Util do
         Enum.join [date.year, date.month, date.day], "/"
     end
 
+    @spec renderPage(binary, Plug.Conn.t()) :: Plug.Conn.t()
     def renderPage(page_contents, conn) do
         conn
         |> Plug.Conn.put_resp_content_type("text/html")

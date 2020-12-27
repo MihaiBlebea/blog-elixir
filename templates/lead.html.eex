@@ -9,9 +9,29 @@
         <%= Blog.Web.Component.component_navigation() %>
 
         <!-- Masthead-->
-        <%= Blog.Web.Component.component_main() %>
+        <header class="masthead bg-primary text-white text-center" id="page-top">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="/assets/img/avataaars.svg" alt="" />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">All done!</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
 
-        <h1>Thank you for subscribing to the email list</p>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Thank you for registering to the email list</p>
+
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-light" href="/">
+                        Back to website!
+                    </a>
+                </div>
+            </div>
+        </header>
 
         <!-- Footer-->
         <%= Blog.Web.Component.component_footer() %>

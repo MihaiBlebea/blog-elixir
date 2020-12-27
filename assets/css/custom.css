@@ -42,8 +42,26 @@
     height: 100%; 
 }
 
+.masthead-article {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.lead-box {
+    font-size: 1rem;
+}
+
+.hljs-ln-n {
+    color: #B3B3B3;
+}
+
 @media (min-width: 992px) {
     .article-content {
         font-size: 1.1em;
+    }
+
+    .lead-box {
+        font-size: 1.2rem;
     }
 }

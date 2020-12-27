@@ -14,6 +14,7 @@ defmodule Blog.Web.Router do
         at: "/",
         from: "./assets"
     plug :match
+    plug Plug.Parsers, parsers: [:urlencoded]
     plug :dispatch
 
     get "test" do
@@ -43,15 +44,14 @@ defmodule Blog.Web.Router do
     end
 
     post "/lead" do
-        {:ok, request, _} = Plug.Conn.read_body(conn)
-        %{"email" => email} = JSON.decode!(request)
-
+        %{"email" => email} = conn.params
         email |> Blog.EmailList.add_subscriber
 
         Page.template_lead_page() |> Util.renderPage(conn)
     end
 
     match _ do
-        send_resp(conn, 404, "Route not found")
+        Page.template_404_page |> Util.renderPage(conn)
+        # send_resp(conn, 404, "Route not found")
     end
 end
