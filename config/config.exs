@@ -15,7 +15,7 @@ config :blog,
 
 
 config :mailchimp,
-    api_key: "0ab32a1b44df3631201f5498d162bfe8-us7",
+    api_key: "",
     list_id: "3e1b069dee"
 
 import_config "config.#{ Mix.env() }.exs"
