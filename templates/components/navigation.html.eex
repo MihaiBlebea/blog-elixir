@@ -6,7 +6,7 @@
             data-toggle="collapse"
             data-target="#navbarResponsive"
             aria-controls="navbarResponsive"
-            aria-expanded="false"
+            aria-expanded="true"
             aria-label="Toggle navigation"
         >
             Menu

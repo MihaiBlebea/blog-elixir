@@ -4,23 +4,24 @@
         <%= Blog.Web.Component.component_head() %>
 
         <!-- Share on Linkedin -->
-        <meta property='og:title' content='{{ $article.Title }}'/>
-        <meta property='og:image' content='{{ $article.Image }}'/>
-        <meta property='og:description' content='{{ $article.Summary }}'/>
-        <meta property='og:url' content='https://mihaiblebea.com/article/{{ $article.Slug }}'/>
+        <meta property='og:title' content='<%= article.title %>'/>
+        <meta property='og:image' content='<%= article.image_url %>'/>
+        <meta property='og:description' content='<%= article.description %>'/>
+        <meta property='og:url' content='https://mihaiblebea.com/article/<%= article.slug %>'/>
         <meta property='author' content='Mihai Blebea'/>
-        <meta name="publish_date" property="og:publish_date" content="{{ $article.Published }}">
+        <meta name="publish_date" property="og:publish_date" content="<%= article.published %>">
 
         <!-- Share on Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:site" content="@MBlebea" />
         <meta property="twitter:creator" content="@MBlebea" />
-        <meta property="twitter:title" content="{{ $article.Title }}">
-        <meta property="twitter:description" content="{{ $article.Summary }}">
-        <meta property="twitter:image" content="{{ $article.Image }}">
-        <meta property='twitter:url' content='https://mihaiblebea.com/article/{{ $article.Slug }}'/>
+        <meta property="twitter:title" content="<%= article.title %>">
+        <meta property="twitter:description" content="<%= article.description %>">
+        <meta property="twitter:image" content="<%= article.image_url %>">
+        <meta property='twitter:url' content='https://mihaiblebea.com/article/<%= article.slug %>'/>
 
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/monokai-sublime.min.css">
+        <link rel="stylesheet" href="/css/footer-social.css">
     </head>
     <body>
         <!-- Navigation-->
@@ -33,7 +34,7 @@
         <div class="page-section">
             <div class="container">
                 <div class="row mb-5">
-                    <div class="col-lg-8 col-md-8 mx-auto article-content">
+                    <div id="article-content" class="col-lg-8 col-md-8 mx-auto article-content">
                         <%= Blog.Web.Util.to_html article.content %>
                     </div>
                 </div>
@@ -95,12 +96,32 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-        <!-- highlightjs script-->
+        <!-- Highlightjs script-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.6.0/dist/highlightjs-line-numbers.min.js"></script>
         <script>
             hljs.initHighlightingOnLoad()
             hljs.initLineNumbersOnLoad()
+        </script>
+
+        <!-- Share article footer -->
+        <script src="/js/footer-social.js"></script>
+        <script>
+            const linkedinUrl      = '<%= Blog.Model.Article.get_linkedin_share_url(article) %>'
+            const facebookUrl      = '<%= Blog.Model.Article.get_facebook_share_url(article) %>'
+            const twitterUrl       = '<%= Blog.Model.Article.get_twitter_share_url(article) %>'
+            const footerId         = 'social-footer'
+            const triggerElementId = 'article-content'
+
+            let social = new SocialFooter({
+                linkedin: linkedinUrl,
+                facebook: facebookUrl,
+                twitter: twitterUrl,
+                elementId: footerId,
+                triggerElementId: triggerElementId
+            })
+
+            window.onscroll = function() { social.scrolling() }
         </script>
     </body>
 </html>

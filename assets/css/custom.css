@@ -50,6 +50,8 @@
 
 .lead-box {
     font-size: 1rem;
+    border: 8px solid #1abc9c;
+    border-radius: 0.5em;
 }
 
 .hljs-ln-n {

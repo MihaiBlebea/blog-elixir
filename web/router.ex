@@ -52,6 +52,5 @@ defmodule Blog.Web.Router do
 
     match _ do
         Page.template_404_page |> Util.renderPage(conn)
-        # send_resp(conn, 404, "Route not found")
     end
 end

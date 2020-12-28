@@ -1,5 +1,5 @@
-<div class="card border-0 bg-primary lead-box">
-    <div class="card-body text-white px-3 py-4 p-md-5">
+<div class="card lead-box">
+    <div class="card-body px-3 py-4 p-md-5">
 
         <h2 class="text-center text-uppercase text-secondary mb-0">Sign up to the email list</h2>
 
@@ -24,7 +24,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <button type="submit" class="btn btn-xl btn-outline-light">
+                <button type="submit" class="btn btn-xl btn-primary">
                     <i class="fas fa-download mr-2"></i>
                     Free Download!
                 </button>
