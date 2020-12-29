@@ -2,6 +2,8 @@ defmodule Blog.Web.Util do
 
     alias Blog.Web.Page
 
+    @article_repo Blog.ContentMetaRepo
+
     @spec renderArticles(list, Plug.Conn.t()) :: Plug.Conn.t()
     def renderArticles(articles, conn) when is_list(articles) do
         articles
@@ -15,7 +17,7 @@ defmodule Blog.Web.Util do
 
     def renderArticle(%Blog.Model.Article{} = article, conn) do
         # Fetch published related articles to render in the "read more" section
-        articles = Blog.Repo.Article.findPublished
+        articles = @article_repo.findPublished 3
 
         article
         |> Blog.Model.Article.fetch_content

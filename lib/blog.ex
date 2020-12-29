@@ -11,20 +11,21 @@ defmodule Blog do
 
         children = [
             {Plug.Cowboy, scheme: :http, plug: Blog.Web.Router, options: [port: port]},
-            {
-                MyXQL,
-                username: Application.get_env(:blog, :mysql_user),
-                password: Application.get_env(:blog, :mysql_password),
-                hostname: Application.get_env(:blog, :mysql_host),
-                port: Application.get_env(:blog, :mysql_port),
-                database: Application.get_env(:blog, :mysql_database),
-                name: :blog_db
-            }
+            # {
+            #     MyXQL,
+            #     username: Application.get_env(:blog, :mysql_user),
+            #     password: Application.get_env(:blog, :mysql_password),
+            #     hostname: Application.get_env(:blog, :mysql_host),
+            #     port: Application.get_env(:blog, :mysql_port),
+            #     database: Application.get_env(:blog, :mysql_database),
+            #     name: :blog_db
+            # },
+            {Blog.ContentMetaRepo, []}
         ]
 
         supervisor = Supervisor.start_link(children, strategy: :one_for_one)
 
-        migrate_database()
+        # migrate_database()
 
         supervisor
     end

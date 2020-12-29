@@ -6,6 +6,8 @@ defmodule Blog.Web.Router do
     alias Blog.Web.Page
     alias Blog.Web.Util
 
+    @article_repo Blog.ContentMetaRepo
+
     plug Plug.Logger
     plug Plug.Static,
         at: "/",
@@ -22,7 +24,8 @@ defmodule Blog.Web.Router do
     end
 
     get "/" do
-        Blog.Repo.Article.findPublished
+        # Blog.Repo.Article.findPublished
+        @article_repo.findPublished
         |> Blog.Web.Util.renderArticles(conn)
     end
 
@@ -33,14 +36,17 @@ defmodule Blog.Web.Router do
     end
 
     get "/tag/:tag" do
-        Blog.Repo.Article.findPublished
-        |> Blog.Web.Util.renderArticles(conn)
+        # Blog.Repo.Article.findPublished
+        @article_repo.findPublished
+        |> Util.renderArticles(conn)
     end
 
     get "/article/:slug" do
+        IO.inspect @article_repo.findBySlug slug
         slug
-        |> Blog.Repo.Article.findBySlug
-        |> Blog.Web.Util.renderArticle(conn)
+        # |> Blog.Repo.Article.findBySlug
+        |> @article_repo.findBySlug
+        |> Util.renderArticle(conn)
     end
 
     post "/lead" do
