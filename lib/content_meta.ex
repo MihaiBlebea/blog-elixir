@@ -21,9 +21,15 @@ defmodule Blog.ContentMeta do
     defp handle_date(body) do
         body
         |> Enum.map(fn (meta)->
-            datetime = Map.get(meta, "created") |> Timex.parse!("{RFC3339z}")
-            Map.put(meta, "created", datetime)
+            meta |> has_created_key(Map.has_key?(meta, "created"))
         end)
+    end
+
+    defp has_created_key(meta, false), do: meta
+
+    defp has_created_key(meta, true) do
+        datetime = Map.get(meta, "created") |> Timex.parse!("{RFC3339z}")
+        Map.put(meta, "created", datetime)
     end
 
     defp build_article(meta) do
