@@ -24,3 +24,5 @@ blog-*.tar
 
 /volume
 
+/.elixir_ls
+

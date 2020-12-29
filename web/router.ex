@@ -24,9 +24,8 @@ defmodule Blog.Web.Router do
     end
 
     get "/" do
-        # Blog.Repo.Article.findPublished
         @article_repo.findPublished
-        |> Blog.Web.Util.renderArticles(conn)
+        |> Blog.Web.Util.renderBlog(conn)
     end
 
     get "/docs" do
@@ -36,15 +35,12 @@ defmodule Blog.Web.Router do
     end
 
     get "/tag/:tag" do
-        # Blog.Repo.Article.findPublished
         @article_repo.findPublished
-        |> Util.renderArticles(conn)
+        |> Util.renderBlog(conn)
     end
 
     get "/article/:slug" do
-        IO.inspect @article_repo.findBySlug slug
         slug
-        # |> Blog.Repo.Article.findBySlug
         |> @article_repo.findBySlug
         |> Util.renderArticle(conn)
     end

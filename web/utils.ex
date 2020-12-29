@@ -4,8 +4,8 @@ defmodule Blog.Web.Util do
 
     @article_repo Blog.ContentMetaRepo
 
-    @spec renderArticles(list, Plug.Conn.t()) :: Plug.Conn.t()
-    def renderArticles(articles, conn) when is_list(articles) do
+    @spec renderBlog(list, Plug.Conn.t()) :: Plug.Conn.t()
+    def renderBlog(articles, conn) when is_list(articles) do
         articles
         |> Enum.map(fn (article)-> Blog.Model.Article.fetch_content(article) end)
         |> Page.template_home_page
