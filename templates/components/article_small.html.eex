@@ -1,6 +1,11 @@
 <a href="/article/<%= article.slug %>">
-    <h4 class="text-uppercase mb-4"><%= article.title %></h4>
+    <h4 class="text-uppercase"><%= article.title %></h4>
 </a>
+<div class="mb-4">
+    <%= for tag <- article.tags do %>
+        <a href="/tag/<%= tag %>" class="badge badge-primary">#<%= tag %></a>
+    <% end %>
+</div>
 <div class="row justify-content-between">
     <div class="col-md-12">
         <p class="mb-4"><%= article.description %></p>

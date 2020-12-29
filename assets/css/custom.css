@@ -58,6 +58,17 @@
     color: #B3B3B3;
 }
 
+.badge {
+    font-size: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: normal;
+}
+
+.fit-content {
+    width: fit-content;
+}
+
 @media (min-width: 992px) {
     .article-content {
         font-size: 1.1em;

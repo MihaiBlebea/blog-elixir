@@ -35,8 +35,7 @@ defmodule Blog.Web.Router do
     end
 
     get "/tag/:tag" do
-        @article_repo.findPublished
-        |> Util.renderBlog(conn)
+        @article_repo.findByTag(tag) |> Util.renderBlog(conn)
     end
 
     get "/article/:slug" do

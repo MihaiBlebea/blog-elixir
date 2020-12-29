@@ -1,5 +1,5 @@
 defmodule Blog.Model.Article do
-    defstruct [:slug, :title, :description, :content_url, :content, :image_url, :published, :created]
+    defstruct [:slug, :title, :description, :content_url, :content, :image_url, :published, :tags, :created]
 
     @type t() :: %__MODULE__{}
 

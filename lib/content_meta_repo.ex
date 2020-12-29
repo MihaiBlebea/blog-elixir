@@ -21,10 +21,12 @@ defmodule Blog.ContentMetaRepo do
     end
 
     @spec findPublished(number) :: [Blog.Model.Article.t()]
-    def findPublished(count) do
+    def findPublished(count), do: findPublished() |> Enum.take(-count)
+
+    @spec findByTag(binary) :: [Blog.Model.Article.t()]
+    def findByTag(tag) do
         Agent.get(__MODULE__, fn (state)-> state end)
-        |> Enum.filter(fn (article)-> article.published == true end)
-        |> Enum.take(-count)
+        |> Enum.filter(fn (article)-> Enum.member?(article.tags, tag) end)
     end
 
     defp cast_one(articles) do
