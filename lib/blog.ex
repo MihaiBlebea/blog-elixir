@@ -20,7 +20,11 @@ defmodule Blog do
             #     database: Application.get_env(:blog, :mysql_database),
             #     name: :blog_db
             # },
-            {Blog.ContentMetaRepo, []}
+            {
+                Blog.ContentMetaRepo, [
+                    %{content_meta_url: Application.get_env(:blog, :content_meta_url)}
+                ]
+            }
         ]
 
         supervisor = Supervisor.start_link(children, strategy: :one_for_one)

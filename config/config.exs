@@ -11,7 +11,8 @@ config :blog,
     youtube_url: "https://www.youtube.com/channel/UCR_g0G3YYE_zQVqZL0y7-dg",
     facebook_url: "",
     twitter_url: "https://twitter.com/MBlebea",
-    linkedin_url: "https://www.linkedin.com/in/mihai-blebea-87353310b"
+    linkedin_url: "https://www.linkedin.com/in/mihai-blebea-87353310b",
+    content_meta_url: "https://raw.githubusercontent.com/MihaiBlebea/mihaiblebea-content/master/content_meta.json"
 
 
 config :mailchimp,

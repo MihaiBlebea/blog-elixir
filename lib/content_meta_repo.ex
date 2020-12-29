@@ -2,8 +2,8 @@ defmodule Blog.ContentMetaRepo do
     use Agent
 
     @spec start_link(any) :: {:error, any} | {:ok, pid}
-    def start_link(_args) do
-        articles = Blog.ContentMeta.fetch_meta_json
+    def start_link([%{content_meta_url: url}]) do
+        articles = Blog.ContentMeta.fetch_meta_json(url)
         Agent.start_link(fn -> articles end, name: __MODULE__)
     end
 

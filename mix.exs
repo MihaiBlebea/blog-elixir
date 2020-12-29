@@ -34,7 +34,8 @@ defmodule Blog.MixProject do
             {:myxql, "~> 0.4.0"},
             {:timex, "~> 3.0"},
             {:earmark, "~> 1.4.0"},
-            {:mailchimp, "~> 0.1.0"}
+            {:mailchimp, "~> 0.1.0"},
+            {:bypass, "~> 2.1.0", only: [:test]}
         ]
     end
 end

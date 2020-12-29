@@ -1,14 +1,13 @@
 defmodule Blog.ContentMeta do
 
-    @content_meta_url "https://raw.githubusercontent.com/MihaiBlebea/mihaiblebea-content/master/content_meta.json"
-
     @model_name Blog.Model.Article
 
-    @spec fetch_meta_json :: list | :error
-    def fetch_meta_json() do
-        case HTTPoison.get(@content_meta_url) do
-            {:ok, %{body: body}} -> parse_meta(body)
-            {:error, _error} -> :error
+    @spec fetch_meta_json(binary) :: list | :error
+    def fetch_meta_json(url) when is_binary(url) do
+        %{body: body, status_code: code} = HTTPoison.get!(url)
+        case code do
+            200 -> parse_meta(body)
+            _ -> :error
         end
     end
 
