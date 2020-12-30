@@ -1,0 +1,18 @@
+<header class="masthead masthead-article text-white text-center bg-primary">
+    <div class="container d-flex align-items-center flex-column">
+
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0"><%= title %></h1>
+
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <div class="video-container">
+            <iframe src="<%= video %>" frameborder="0" width="560" height="315" allow="encrypted-media" allowfullscreen=""></iframe>
+        </div>
+    </div>
+</header>

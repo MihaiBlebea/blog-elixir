@@ -29,13 +29,20 @@
 
         <!-- Masthead-->
         <%= subtitle = Enum.join([Blog.Web.Util.to_format_date(article.created), "Mihai Blebea"], " - ") %>
-        <%= Blog.Web.Component.component_main_article(article.title, subtitle, article.image_url) %>
+
+        <%= if article.video_url == nil do %>
+            <%= Blog.Web.Component.component_main_article(article.title, subtitle, article.image_url) %>
+        <% else %>
+            <%= Blog.Web.Component.component_main_article_video(article.title, article.video_url) %>
+        <% end %>
 
         <div class="page-section">
             <div class="container">
                 <div class="row mb-5">
                     <div id="article-content" class="col-lg-8 col-md-8 mx-auto article-content">
+
                         <%= Blog.Web.Util.to_html article.content %>
+
                     </div>
                 </div>
 
