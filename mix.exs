@@ -13,7 +13,7 @@ defmodule Blog.MixProject do
     end
 
     defp elixirc_paths(:test), do: ["lib", "web", "test"]
-    defp elixirc_paths(_), do: ["lib", "web"]
+    defp elixirc_paths(_), do: ["lib", "web", "templates"]
 
     # Run "mix help compile.app" to learn about applications.
     def application do

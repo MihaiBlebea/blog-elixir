@@ -1,4 +1,4 @@
 use Mix.Config
 
 config :blog,
-    port: 8099
+    port: 8080
