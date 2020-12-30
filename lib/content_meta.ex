@@ -2,13 +2,12 @@ defmodule Blog.ContentMeta do
 
     @model_name Blog.Model.Article
 
-    @spec fetch_meta_json(binary) :: list | :error
+    @spec fetch_meta_json(binary) :: [Blog.Model.Article.t()] | :error
     def fetch_meta_json(url) when is_binary(url) do
-        %{body: body, status_code: code} = HTTPoison.get!(url)
-        case code do
-            200 -> parse_meta(body)
-            _ -> :error
-        end
+        %{body: body} = HTTPoison.get!(url, get_default_headers())
+        %{ "content" => content } = body |> JSON.decode!
+
+        content |> Base.decode64!(ignore: :whitespace) |> parse_meta
     end
 
     defp parse_meta(body) do
@@ -39,4 +38,10 @@ defmodule Blog.ContentMeta do
     end
 
     defp to_struct(content, module), do: struct(module, content)
+
+    defp get_default_headers() do
+        ["Authorization": "token #{ fetch_env_github_token() }", "Content-Type": "application/json"]
+    end
+
+    defp fetch_env_github_token, do: System.fetch_env!("GITHUB_TOKEN")
 end

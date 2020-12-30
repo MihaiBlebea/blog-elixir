@@ -16,7 +16,8 @@ defmodule Blog.Web.Router do
         at: "/",
         from: "./assets"
     plug :match
-    plug Plug.Parsers, parsers: [:urlencoded]
+    plug Plug.Parsers, parsers: [:urlencoded, :json],
+        json_decoder: JSON
     plug :dispatch
 
     get "test" do
@@ -32,6 +33,14 @@ defmodule Blog.Web.Router do
         conn
         |> put_resp_header("content-type", "text/html; charset=utf-8")
         |> send_file(200, "./doc/index.html")
+    end
+
+    post "/webhook/github" do
+        IO.inspect conn.params
+        case Blog.ContentMetaUpdater.trigger_update(conn.params) do
+            :ok -> send_resp(conn, 200, "")
+            :error -> send_resp(conn, 500, "")
+        end
     end
 
     get "/tag/:tag" do

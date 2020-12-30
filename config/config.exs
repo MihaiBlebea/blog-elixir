@@ -12,7 +12,7 @@ config :blog,
     facebook_url: "",
     twitter_url: "https://twitter.com/MBlebea",
     linkedin_url: "https://www.linkedin.com/in/mihai-blebea-87353310b",
-    content_meta_url: "https://raw.githubusercontent.com/MihaiBlebea/mihaiblebea-content/master/content_meta.json"
+    content_meta_url: "https://api.github.com/repos/MihaiBlebea/mihaiblebea-content/contents/content_meta.json"
 
 
 config :mailchimp,

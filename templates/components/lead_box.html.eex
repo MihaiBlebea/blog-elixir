@@ -13,7 +13,7 @@
         <p>I am going to publish posts and tutorials at a regular interval, but we all know how life can get in the way.</p>
         <p>If you want to stay in touch and get all the latest content first, then you may consider subscribing to my awesome email list</p>
 
-        <form action="/lead" method="POST" id="contactForm" novalidate="novalidate">
+        <form action="/lead" method="POST">
             <div class="control-group mb-4">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                     <label>Email Address</label>

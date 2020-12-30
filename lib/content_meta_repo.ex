@@ -29,6 +29,11 @@ defmodule Blog.ContentMetaRepo do
         |> Enum.filter(fn (article)-> Enum.member?(article.tags, tag) end)
     end
 
+    @spec update_state([Blog.Model.Article.t()]) :: :ok
+    def update_state(articles) do
+        Agent.update(__MODULE__, fn (_state)-> articles end)
+    end
+
     defp cast_one(articles) do
         case articles do
             [] -> nil

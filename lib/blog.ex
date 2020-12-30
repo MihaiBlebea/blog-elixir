@@ -34,7 +34,7 @@ defmodule Blog do
         supervisor
     end
 
-    defp migrate_database() do
-        Blog.Repo.Article.create_table()
-    end
+    # defp migrate_database() do
+    #     Blog.Repo.Article.create_table()
+    # end
 end
