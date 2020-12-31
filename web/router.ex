@@ -26,7 +26,7 @@ defmodule Blog.Web.Router do
 
     get "/" do
         @article_repo.findPublished
-        |> Blog.Web.Util.renderBlog(conn)
+        |> Blog.Web.BlogController.renderBlog(conn)
     end
 
     get "/docs" do
@@ -36,7 +36,6 @@ defmodule Blog.Web.Router do
     end
 
     post "/webhook/github" do
-        IO.inspect conn.params
         case Blog.ContentMetaUpdater.trigger_update(conn.params) do
             :ok -> send_resp(conn, 200, "")
             :error -> send_resp(conn, 500, "")
@@ -44,13 +43,13 @@ defmodule Blog.Web.Router do
     end
 
     get "/tag/:tag" do
-        @article_repo.findByTag(tag) |> Util.renderBlog(conn)
+        @article_repo.findByTag(tag) |> Blog.Web.BlogController.renderBlog(conn)
     end
 
     get "/article/:slug" do
         slug
         |> @article_repo.findBySlug
-        |> Util.renderArticle(conn)
+        |> Blog.Web.BlogController.renderArticle(conn)
     end
 
     post "/lead" do

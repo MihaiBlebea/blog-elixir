@@ -11,6 +11,7 @@ defmodule Blog.Web.Component do
     EEx.function_from_file :def, :component_divider, "templates/components/divider.html.eex", [:title]
     EEx.function_from_file :def, :component_article_small, "templates/components/article_small.html.eex", [:article]
     EEx.function_from_file :def, :component_lead_box, "templates/components/lead_box.html.eex"
-    EEx.function_from_file :def, :component_pagination, "templates/components/pagination.html.eex"
+    EEx.function_from_file :def, :component_pagination, "templates/components/pagination.html.eex", [:meta]
+    EEx.function_from_file :def, :component_modal, "templates/components/modal.html.eex"
 
 end

@@ -9,7 +9,7 @@ config :blog,
     mysql_database: "blog",
     github_url: "https://github.com/MihaiBlebea",
     youtube_url: "https://www.youtube.com/channel/UCR_g0G3YYE_zQVqZL0y7-dg",
-    facebook_url: "",
+    facebook_url: "https://www.facebook.com/blebea.serban",
     twitter_url: "https://twitter.com/MBlebea",
     linkedin_url: "https://www.linkedin.com/in/mihai-blebea-87353310b",
     content_meta_url: "https://api.github.com/repos/MihaiBlebea/mihaiblebea-content/contents/content_meta.json"

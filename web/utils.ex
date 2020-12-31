@@ -2,29 +2,6 @@ defmodule Blog.Web.Util do
 
     alias Blog.Web.Page
 
-    @article_repo Blog.ContentMetaRepo
-
-    @spec renderBlog(list, Plug.Conn.t()) :: Plug.Conn.t()
-    def renderBlog(articles, conn) when is_list(articles) do
-        articles
-        |> Enum.map(fn (article)-> Blog.Model.Article.fetch_content(article) end)
-        |> Page.template_home_page
-        |> renderPage(conn)
-    end
-
-    @spec renderArticle(nil | Blog.Model.Article.t(), Plug.Conn.t()) :: Plug.Conn.t()
-    def renderArticle(nil, conn), do: render404(conn)
-
-    def renderArticle(%Blog.Model.Article{} = article, conn) do
-        # Fetch published related articles to render in the "read more" section
-        articles = @article_repo.findPublished 3
-
-        article
-        |> Blog.Model.Article.fetch_content
-        |> Page.template_article_page(articles)
-        |> renderPage(conn)
-    end
-
     @spec render404(Plug.Conn.t()) :: Plug.Conn.t()
     def render404(conn), do: Page.template_404_page() |> renderPage(conn)
 

@@ -28,7 +28,7 @@
         <%= Blog.Web.Component.component_navigation() %>
 
         <!-- Masthead-->
-        <%= subtitle = Enum.join([Blog.Web.Util.to_format_date(article.created), "Mihai Blebea"], " - ") %>
+        <% subtitle = Enum.join([Blog.Web.Util.to_format_date(article.created), "Mihai Blebea"], " - ") %>
 
         <%= if article.video_url == nil do %>
             <%= Blog.Web.Component.component_main_article(article.title, subtitle, article.image_url) %>
