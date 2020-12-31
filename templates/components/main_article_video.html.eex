@@ -1,4 +1,4 @@
-<header class="masthead masthead-article text-white text-center bg-primary">
+<header class="masthead masthead-article text-white text-center bg-primary" id="page-top">
     <div class="container d-flex align-items-center flex-column">
 
         <!-- Masthead Heading-->

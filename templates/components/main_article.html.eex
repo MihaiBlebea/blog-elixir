@@ -1,4 +1,4 @@
-<header class="masthead masthead-article text-white text-center" style="background-image: url(<%= image %>);">
+<header class="masthead masthead-article text-white text-center" id="page-top" style="background-image: url(<%= image %>);">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
         <img class="masthead-avatar mb-5" src="/assets/img/avataaars.svg" alt="" />
