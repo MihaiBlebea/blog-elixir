@@ -14,9 +14,18 @@ config :blog,
     linkedin_url: "https://www.linkedin.com/in/mihai-blebea-87353310b",
     content_meta_url: "https://api.github.com/repos/MihaiBlebea/mihaiblebea-content/contents/content_meta.json"
 
-
 config :mailchimp,
     api_key: "",
     list_id: "3e1b069dee"
+
+config :blog, Blog.EmailSender,
+    # adapter: Bamboo.SesAdapter,
+    adapter: Bamboo.LocalAdapter,
+    ex_aws: [
+        region: "eu-west-2",
+        access_key_id: "AWS_ACCESS_KEY_ID",
+        secret_access_key: "AWS_SECRET_ACCESS_KEY"
+    ]
+
 
 import_config "config.#{ Mix.env() }.exs"

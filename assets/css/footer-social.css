@@ -21,6 +21,10 @@
     margin-right: 10px;
 }
 
+.inside a {
+    width: fit-content;
+}
+
 @media (min-width: 992px) {
     .footer-social {
         position: fixed;

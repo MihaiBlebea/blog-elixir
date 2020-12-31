@@ -18,7 +18,6 @@ defmodule Blog.Web.BlogController do
             false ->
                 articles
                 |> Enum.chunk_every(@articles_per_page)
-                |> IO.inspect()
                 |> Enum.at(current_page - 1)
                 |> Page.template_home_page(meta)
                 |> Util.renderPage(conn)

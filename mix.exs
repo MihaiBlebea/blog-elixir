@@ -35,6 +35,8 @@ defmodule Blog.MixProject do
             {:timex, "~> 3.0"},
             {:earmark, "~> 1.4.0"},
             {:mailchimp, "~> 0.1.0"},
+            {:bamboo, "~> 1.6"},
+            {:bamboo_ses, "~> 0.1.0"},
             {:bypass, "~> 2.1.0", only: [:test]},
             {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
         ]

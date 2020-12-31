@@ -20,10 +20,6 @@ defmodule Blog.Web.Router do
         json_decoder: JSON
     plug :dispatch
 
-    get "test" do
-        send_resp(conn, 200, "All working fine")
-    end
-
     get "/" do
         @article_repo.findPublished
         |> Blog.Web.BlogController.renderBlog(conn)
@@ -55,8 +51,31 @@ defmodule Blog.Web.Router do
     post "/lead" do
         %{"email" => email} = conn.params
         email |> Blog.EmailList.add_subscriber
+        title = "All done!"
+        subtitle = "Thank you for registering to the email list"
+        cta = "Back to website"
+        cta_url = "/"
 
-        Page.template_lead_page() |> Util.renderPage(conn)
+        Page.template_lead_page(title, subtitle, cta, cta_url) |> Util.renderPage(conn)
+    end
+
+    post "/contact" do
+        %{
+            "email" => email,
+            "message" => message,
+            "name" => name,
+            "phone" => phone
+        } = conn.params
+
+        Blog.Email.contact_email(name, phone, email, message)
+        |> Blog.EmailSender.deliver_now()
+
+        title = "Message sent!"
+        subtitle = "Thank you for the message, I'll get back to you shortly"
+        cta = "Back to website"
+        cta_url = "/"
+
+        Page.template_lead_page(title, subtitle, cta, cta_url) |> Util.renderPage(conn)
     end
 
     match _ do

@@ -3,6 +3,7 @@
     <head>
         <%= Blog.Web.Component.component_head() %>
 
+        <title>Whoops | Mihai Blebea</title>
     </head>
     <body>
         <!-- Navigation-->

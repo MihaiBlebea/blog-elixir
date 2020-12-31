@@ -3,6 +3,8 @@
     <head>
         <%= Blog.Web.Component.component_head() %>
 
+        <title><%= article.title %> | Mihai Blebea</title>
+
         <!-- Share on Linkedin -->
         <meta property='og:title' content='<%= article.title %>'/>
         <meta property='og:image' content='<%= article.image_url %>'/>
