@@ -1,4 +1,9 @@
 defmodule Blog do
+
+    @moduledoc """
+    This module handles the application supervisor and registering dependencies to it.
+    """
+
     use Application
 
     require Logger

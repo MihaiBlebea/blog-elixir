@@ -1,11 +1,15 @@
 defmodule Blog.ContentMeta do
 
+    @moduledoc """
+    This module handles the fetching of data from the github account and returns it as a list of article models.
+    """
+
     @model_name Blog.Model.Article
 
     @spec fetch_meta_json(binary) :: [Blog.Model.Article.t()] | :error
     def fetch_meta_json(url) when is_binary(url) do
         %{body: body} = HTTPoison.get!(url, get_default_headers())
-        %{ "content" => content } = body |> JSON.decode!
+        %{"content" => content} = body |> JSON.decode!
 
         content |> Base.decode64!(ignore: :whitespace) |> parse_meta
     end
@@ -14,12 +18,12 @@ defmodule Blog.ContentMeta do
         body
         |> JSON.decode!
         |> handle_date
-        |> Enum.map(fn (meta)-> build_article(meta) end)
+        |> Enum.map(fn (meta) -> build_article(meta) end)
     end
 
     defp handle_date(body) do
         body
-        |> Enum.map(fn (meta)->
+        |> Enum.map(fn (meta) ->
             meta |> has_created_key(Map.has_key?(meta, "created"))
         end)
     end
@@ -33,7 +37,7 @@ defmodule Blog.ContentMeta do
 
     defp build_article(meta) do
         meta
-        |> Enum.map(fn ({ key, value })-> {String.to_existing_atom(key), value} end)
+        |> Enum.map(fn ({key, value}) -> {String.to_existing_atom(key), value} end)
         |> to_struct(@model_name)
     end
 

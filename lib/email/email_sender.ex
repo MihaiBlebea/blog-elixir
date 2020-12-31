@@ -1,4 +1,9 @@
 defmodule Blog.EmailSender do
+
+    @moduledoc """
+    This module handles the sending of emails using the adaptor.
+    """
+
     use Bamboo.Mailer, otp_app: :blog
 end
 

@@ -1,9 +1,11 @@
 defmodule Blog.Web.Util do
 
+    @moduledoc "This module provides useful functions to the web component"
+
     alias Blog.Web.Page
 
-    @spec render404(Plug.Conn.t()) :: Plug.Conn.t()
-    def render404(conn), do: Page.template_404_page() |> renderPage(conn)
+    @spec render_404(Plug.Conn.t()) :: Plug.Conn.t()
+    def render_404(conn), do: Page.template_404_page() |> render_page(conn)
 
     @spec to_html(nil | binary) :: nil | binary
     def to_html(nil), do: nil
@@ -20,8 +22,8 @@ defmodule Blog.Web.Util do
         Enum.join [date.year, date.month, date.day], "/"
     end
 
-    @spec renderPage(binary, Plug.Conn.t()) :: Plug.Conn.t()
-    def renderPage(page_contents, conn) do
+    @spec render_page(binary, Plug.Conn.t()) :: Plug.Conn.t()
+    def render_page(page_contents, conn) do
         conn
         |> Plug.Conn.put_resp_content_type("text/html")
         |> Plug.Conn.send_resp(200, page_contents)

@@ -1,5 +1,9 @@
 defmodule Blog.Repo.Article do
 
+    @moduledoc """
+        This module implements the Blog.Repo.Base module and extends it with custom functions related to the article model
+    """
+
     use Blog.Repo.Base, model_name: Blog.Model.Article
 
     @table_name "articles"
@@ -33,8 +37,8 @@ defmodule Blog.Repo.Article do
         ) |> handle_result
     end
 
-    @spec findOne(integer) :: any
-    def findOne(id) do
+    @spec find_one(integer) :: any
+    def find_one(id) do
         MyXQL.query(
             @db_app,
             "SELECT * FROM #{ @table_name } WHERE id = ?",
@@ -42,8 +46,8 @@ defmodule Blog.Repo.Article do
         ) |> cast_nil
     end
 
-    @spec findBySlug(binary) :: any
-    def findBySlug(slug) do
+    @spec find_by_slug(binary) :: any
+    def find_by_slug(slug) do
         MyXQL.query(
             @db_app,
             "SELECT * FROM #{ @table_name } WHERE slug = ?",
@@ -51,8 +55,8 @@ defmodule Blog.Repo.Article do
         ) |> cast_nil
     end
 
-    @spec findPublished() :: any
-    def findPublished() do
+    @spec find_published() :: any
+    def find_published() do
         MyXQL.query(
             @db_app,
             "SELECT * FROM #{ @table_name } WHERE published = 1"

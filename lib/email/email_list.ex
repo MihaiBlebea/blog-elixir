@@ -1,5 +1,9 @@
 defmodule Blog.EmailList do
 
+    @moduledoc """
+    This module handles users signing in to the email list.
+    """
+
     @email_regex ~r/^[\w.!#$%&’*+\-\/=?\^`{|}~]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/i
 
     @spec add_subscriber(binary) :: {:error, any} | {:ok, Mailchimp.Member.t()}

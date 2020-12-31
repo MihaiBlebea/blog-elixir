@@ -1,5 +1,9 @@
 defmodule Blog.Web.Page do
 
+    @moduledoc """
+    Module handles the registration of functions that return page templates.
+    """
+
     require EEx
 
     EEx.function_from_file :def, :template_home_page, "templates/home.html.eex", [:articles, :meta]

@@ -21,8 +21,8 @@ defmodule Blog.Web.Router do
     plug :dispatch
 
     get "/" do
-        @article_repo.findPublished
-        |> Blog.Web.BlogController.renderBlog(conn)
+        @article_repo.find_published
+        |> Blog.Web.BlogController.render_blog(conn)
     end
 
     get "/docs" do
@@ -39,13 +39,13 @@ defmodule Blog.Web.Router do
     end
 
     get "/tag/:tag" do
-        @article_repo.findByTag(tag) |> Blog.Web.BlogController.renderBlog(conn)
+        @article_repo.find_by_tag(tag) |> Blog.Web.BlogController.render_blog(conn)
     end
 
     get "/article/:slug" do
         slug
-        |> @article_repo.findBySlug
-        |> Blog.Web.BlogController.renderArticle(conn)
+        |> @article_repo.find_by_slug
+        |> Blog.Web.BlogController.render_article(conn)
     end
 
     post "/lead" do
@@ -56,7 +56,7 @@ defmodule Blog.Web.Router do
         cta = "Back to website"
         cta_url = "/"
 
-        Page.template_lead_page(title, subtitle, cta, cta_url) |> Util.renderPage(conn)
+        Page.template_lead_page(title, subtitle, cta, cta_url) |> Util.render_page(conn)
     end
 
     post "/contact" do
@@ -75,10 +75,10 @@ defmodule Blog.Web.Router do
         cta = "Back to website"
         cta_url = "/"
 
-        Page.template_lead_page(title, subtitle, cta, cta_url) |> Util.renderPage(conn)
+        Page.template_lead_page(title, subtitle, cta, cta_url) |> Util.render_page(conn)
     end
 
     match _ do
-        Page.template_404_page |> Util.renderPage(conn)
+        Page.template_404_page |> Util.render_page(conn)
     end
 end

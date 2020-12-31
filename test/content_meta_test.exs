@@ -29,8 +29,8 @@ defmodule ContentMetaTest do
     test "can fetch content meta data from github", %{bypass: bypass} do
         resp = get_meta_mock()
 
-        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn)->
-            Plug.Conn.resp(conn, 200, JSON.encode!([ resp ]))
+        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn) ->
+            Plug.Conn.resp(conn, 200, JSON.encode!([resp]))
         end)
 
         data = request_data(bypass)
@@ -41,7 +41,7 @@ defmodule ContentMetaTest do
     test "returns :error atom when server returns internal error", %{bypass: bypass} do
         resp = get_meta_mock()
 
-        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn)->
+        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn) ->
             Plug.Conn.resp(conn, 500, "")
         end)
 
@@ -53,8 +53,8 @@ defmodule ContentMetaTest do
     test "any key is nil if key is missing from json data", %{bypass: bypass} do
         resp = get_meta_mock() |> Map.delete(:image_url)
 
-        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn)->
-            Plug.Conn.resp(conn, 200, JSON.encode!([ resp ]))
+        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn) ->
+            Plug.Conn.resp(conn, 200, JSON.encode!([resp]))
         end)
 
         data = request_data(bypass)
@@ -65,8 +65,8 @@ defmodule ContentMetaTest do
     test "created key is nil if key is missing from json data", %{bypass: bypass} do
         resp = get_meta_mock() |> Map.delete(:created)
 
-        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn)->
-            Plug.Conn.resp(conn, 200, JSON.encode!([ resp ]))
+        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn) ->
+            Plug.Conn.resp(conn, 200, JSON.encode!([resp]))
         end)
 
         data = request_data(bypass)

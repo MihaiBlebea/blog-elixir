@@ -1,4 +1,10 @@
 defmodule Blog.Model.Article do
+
+    @moduledoc """
+        Article module represents a model that holds the data for the article entity.
+        Has methods to build the sharing urls for each specific social platform.
+    """
+
     defstruct [:slug, :title, :description, :content_url, :content, :image_url, :video_url, :published, :tags, :created]
 
     @type t() :: %__MODULE__{}

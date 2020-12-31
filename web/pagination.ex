@@ -1,5 +1,7 @@
 defmodule Blog.Web.Pagination do
 
+    @moduledoc "This module handles the pagination concern for the blog"
+
     @type pagination_meta :: %{current_page: integer, total_pages: integer, prev_page: integer | nil, next_page: integer | nil}
 
     @spec are_pagination_params(list, integer, integer) :: any

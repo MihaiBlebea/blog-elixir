@@ -25,8 +25,8 @@ defmodule ContentMetaRepoTest do
     test "can get all published articles", %{bypass: bypass} do
         resp = mocked_post()
 
-        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn)->
-            Plug.Conn.resp(conn, 200, JSON.encode!([ resp, resp, resp ]))
+        Bypass.expect_once(bypass, "GET", "/content_meta.json", fn (conn) ->
+            Plug.Conn.resp(conn, 200, JSON.encode!([resp, resp, resp]))
         end)
 
         # url = bypass.port |> endpoint_url("content_meta.json")

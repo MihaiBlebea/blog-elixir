@@ -1,4 +1,9 @@
 defmodule Blog.Email do
+
+    @moduledoc """
+    This module contains functions to build the different email types before sending.
+    """
+
     import Bamboo.Email
 
     @spec contact_email(binary, binary, binary, binary) :: Bamboo.Email.t()

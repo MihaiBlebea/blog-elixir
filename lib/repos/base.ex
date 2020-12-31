@@ -1,5 +1,10 @@
 defmodule Blog.Repo.Base do
 
+    @moduledoc """
+        This module provides basic functions for parsing data coming from and going to the database.
+        To be used with use Blog.Repo.Base in the implementing module
+    """
+
     @spec __using__(any) :: any
     defmacro __using__([model_name: model_name]) do
 
@@ -21,10 +26,10 @@ defmodule Blog.Repo.Base do
             defp cast({:ok, %MyXQL.Result{} = result}) do
                 %MyXQL.Result{columns: columns, rows: rows} = result
                 rows
-                |> Enum.map(fn (row)->
+                |> Enum.map(fn (row) ->
                     map_keys_values(columns, row)
                 end)
-                |> Enum.map(fn (result)-> struct(@model_name, result) end)
+                |> Enum.map(fn (result) -> struct(@model_name, result) end)
                 |> cast_one?
             end
 

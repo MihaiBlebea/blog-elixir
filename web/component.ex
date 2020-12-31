@@ -1,5 +1,10 @@
 defmodule Blog.Web.Component do
 
+    @moduledoc """
+    Module handles the registration of the component functions.
+    These functions fetch the template of the component from a file and returns it as a function.
+    """
+
     require EEx
 
     EEx.function_from_file :def, :component_navigation, "templates/components/navigation.html.eex"
