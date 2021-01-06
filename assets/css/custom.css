@@ -16,10 +16,27 @@
 .article-content img {
     margin-top: 20px;
     margin-bottom: 20px;
+    max-width: 100%;
 }
 
 .article-content pre {
     border-radius: 0.5rem;
+}
+
+.article-content blockquote {
+    text-align: center;
+
+    border: solid 8px rgb(23, 168, 139);
+    border-radius: 0.5em;
+    box-shadow: none;
+    box-sizing: border-box;
+
+    padding: 30px;
+    font-size: 1.2em;
+}
+
+.article-content blockquote::before {
+    content: "♥";
 }
 
 .hljs-ln-code {
@@ -46,6 +63,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
+    
+    /* This may need more work */
+    background-blend-mode: overlay; 
 }
 
 .lead-box {
