@@ -25,6 +25,10 @@
     width: fit-content;
 }
 
+.inside .svg-inline--fa {
+    font-size: 1.4em;
+}
+
 @media (min-width: 992px) {
     .footer-social {
         position: fixed;
