@@ -58,7 +58,7 @@
                 </div>
                 <!-- About Section Button-->
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
+                    <a class="btn btn-xl btn-outline-light" href="<%= Application.get_env(:blog, :cv_download_url) %>">
                         <i class="fas fa-download mr-2"></i>
                         Free Download!
                     </a>

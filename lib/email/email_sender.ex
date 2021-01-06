@@ -7,6 +7,6 @@ defmodule Blog.EmailSender do
     use Bamboo.Mailer, otp_app: :blog
 end
 
-# email = TestBambooSes.welcome_email()
+# email = Blog.Email.contact_email("Serban", "0741121323", "serban@gmail.com", "hey man how are you")
 # email = Bamboo.SesAdapter.set_configuration_set(email, "configuration_set_name")
-# TestBambooSes.Mailer.deliver_now(email)
+# Blog.EmailSender.deliver_now(email)

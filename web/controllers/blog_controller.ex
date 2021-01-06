@@ -6,7 +6,7 @@ defmodule Blog.Web.BlogController do
 
     @article_repo Blog.ContentMetaRepo
 
-    @articles_per_page 2
+    @articles_per_page Application.get_env(:blog, :articles_per_page)
 
     @spec render_blog([Blog.Model.Article.t()], Plug.Conn.t()) :: Plug.Conn.t()
     def render_blog(articles, conn) when is_list(articles) do
