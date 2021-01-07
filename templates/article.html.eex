@@ -41,8 +41,8 @@
         <div class="page-section">
             <div class="container">
 
-                <div class="row mb-5">
-                    <img class="col-lg-8 col-md-8 mx-auto" src="<%= article.image_url %>">
+                <div class="row justify-content-center mb-5">
+                    <img class="col-lg-8 col-md-8 w-100" src="<%= article.image_url %>">
                 </div>
 
                 <div class="row mb-5">

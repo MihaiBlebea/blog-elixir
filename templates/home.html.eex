@@ -23,7 +23,7 @@
                         <%= for article <- articles do %>
                             <div class="card mb-5 d-block">
                                 <a href="/article/<%= article.slug %>" class="blog-item">
-                                    <div class="blog-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="blog-item-caption d-md-flex align-items-center justify-content-center h-100 w-100 d-none">
                                         <div>
                                             <div class="blog-item-caption-content text-center text-white"><i class="fas fa-plus fa-2x"></i></div>
                                             <h3 class="d-block text-white text-center"><%= article.title %></h3>
