@@ -29,7 +29,7 @@
                                             <h3 class="d-block text-white text-center"><%= article.title %></h3>
                                         </div>
                                     </div>
-                                    <img src="<%= article.image_url %>" class="card-img-top" alt="...">
+                                    <img src="<%= article.image_url %>" class="card-img-top bg-primary" alt="...">
                                 </a>
                                 <div class="card-body">
                                     <%= Blog.Web.Component.component_article_small(article) %>
